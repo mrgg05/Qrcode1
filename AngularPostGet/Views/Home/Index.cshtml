@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular.min.js"></script>
+<script src="~/Scripts/Module.js"></script>
+<script src="~/Scripts/Service.js"></script>
+<script src="~/Scripts/EmpController.js"></script>
+
+<div ng-app="myApp" ng-controller="myCtrl" ng-init="GetAllEmp()">
+    <table>
+        <tr>
+            <th>FirstName</th>
+            <th>LastName</th>
+        </tr>
+        <tr ng-repeat="x in employee">
+            <td ng-bind="x.FirstName"></td>
+            <td ng-bind="x.LastName"></td>
+            <td>
+                <span ng-click="editEmployee(x)" class="btn btn-default">Edit</span>
+                <span ng-click="DeleteE(x)" class="btn btn-default">Delete</span>
+            </td>
+        </tr>
+    </table>
+
+    <input type="button"  class="btn btn-success" value="Employee Ekle" ng-click="Divac()"/>
+
+    <div ng-show="divEmployee">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>
+                    <input type="text" disabled="disabled" ng-model="employeeId" />
+                </th>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <th>
+                    <input type="text" ng-model="employeeName" />
+                </th>
+            </tr>
+            <tr>
+                <th>Surname</th>
+                <th>
+                    <input type="text" ng-model="employeeLastName" />
+                </th>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="button" ng-click="AddUpdateEmployee()" class="btn btn-success" value="Kaydet" /></td>
+               
+            </tr>
+
+        </table>
+    </div>
+</div>
+
